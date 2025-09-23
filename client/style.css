@@ -13,6 +13,11 @@ body {
 		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	font: 1rem;
 	background: #fff;
+	overflow: hidden;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 
 input,
@@ -25,4 +30,52 @@ svg,
 img {
 	max-width: 100%;
 	display: inline-block;
+}
+
+.grid {
+	height: 100%;
+	max-height: 100dvh;
+	max-height: 100vh;
+	display: grid;
+	grid-template-areas:
+		"aside header header"
+		"aside main main"
+		"aside main main"
+		"aside footer footer";
+	grid-template-columns: 10rem 1fr;
+	grid-template-rows: auto 1fr auto;
+}
+
+header {
+	height: 4rem;
+	padding: 1rem;
+	grid-area: header;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+aside {
+	height: 100dvh;
+	grid-area: aside;
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.content {
+	padding: 1rem;
+	grid-area: main;
+	overflow-x: scroll;
+}
+
+.contents {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+	gap: 1rem;
+}
+
+.content__text {
+	padding: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+footer {
+	grid-area: footer;
 }
